@@ -14,7 +14,8 @@ import {
 import Widget from "../../components/Widget/Widget.js";
 import Footer from "../../components/Footer/Footer.js";
 
-import loginImage from "../../assets/registerImage.svg";
+// import loginImage from "../../assets/registerImage.svg";
+import loginImage from "../../assets/rails.jpg";
 import SofiaLogo from "../../components/Icons/SofiaLogo.js";
 import GoogleIcon from "../../components/Icons/AuthIcons/GoogleIcon.js";
 import TwitterIcon from "../../components/Icons/AuthIcons/TwitterIcon.js";
@@ -25,7 +26,7 @@ import { registerUser } from "../../actions/register.js";
 import hasToken from "../../services/authService";
 
 const Register = (props) => {
-  const [state, setState] = useState({ email: '', password: ''} )
+  const [state, setState] = useState({ email: '', password: '',cpass: '',mobile: ''} )
 
   const changeCred = (event) => {
     setState({ ...state, [event.target.name]: event.target.value })
@@ -56,13 +57,13 @@ const Register = (props) => {
               <div className="d-flex align-items-center justify-content-between py-3">
                 <p className="auth-header mb-0">Sign Up</p>
                 <div className="logo-block">
-                  <SofiaLogo />
-                  <p className="mb-0">SOFIA</p>
+                  {/* <SofiaLogo />
+                  <p className="mb-0">Fake Reservations</p> */}
                 </div>
               </div>
-              <div className="auth-info my-2">
+              {/* <div className="auth-info my-2">
                 <p>This is a real app with Node.js backend - use <b>"admin@flatlogic.com / password"</b> to login!</p>
-              </div>
+              </div> */}
               <form onSubmit={(event => doRegister(event))}>
                 <FormGroup className="my-3">
                   <FormText>Email</FormText>
@@ -74,13 +75,13 @@ const Register = (props) => {
                     type="email"
                     required
                     name="email"
-                    placeholder="Henry Monk"
+                    placeholder="Enter Your Email ID"
                   />
                 </FormGroup>
                 <FormGroup  className="my-3">
                   <div className="d-flex justify-content-between">
                     <FormText>Password</FormText>
-                    <Link to="/error">Forgot password?</Link>
+                    {/* <Link to="/error">Forgot password?</Link> */}
                   </div>
                   <Input
                     id="password"
@@ -90,7 +91,39 @@ const Register = (props) => {
                     type="password"
                     required
                     name="password"
-                    placeholder="Place your password here"
+                    placeholder="Place Your Password "
+                  />
+                </FormGroup>
+                <FormGroup  className="my-3">
+                  <div className="d-flex justify-content-between">
+                    <FormText>Confirm Password</FormText>
+                    {/* <Link to="/error">Forgot password?</Link> */}
+                  </div>
+                  <Input
+                    id="cpass"
+                    className="input-transparent pl-3"
+                    value={state.cpass}
+                    onChange={(event => changeCred(event))}
+                    type="password"
+                    required
+                    name="cpass"
+                    placeholder=" Confirm Your Password "
+                  />
+                </FormGroup>
+                <FormGroup  className="my-3">
+                  <div className="d-flex justify-content-between">
+                    <FormText>Phone No</FormText>
+                    {/* <Link to="/error">Forgot password?</Link> */}
+                  </div>
+                  <Input
+                    id="mobile"
+                    className="input-transparent pl-3"
+                    value={state.mobile}
+                    onChange={(event => changeCred(event))}
+                    type="number"
+                    required
+                    name="mobile"
+                    placeholder=" Enter Your Phone No "
                   />
                 </FormGroup>
                 <div className="bg-widget d-flex justify-content-center">
@@ -98,22 +131,16 @@ const Register = (props) => {
                 </div>
                 <p className="dividing-line my-3">&#8195;Or&#8195;</p>
                 <div className="d-flex align-items-center my-3">
-                  <p className="social-label mb-0">Login with</p>
-                  <div className="socials">
-                    <a href="https://flatlogic.com/"><GoogleIcon /></a>
-                    <a href="https://flatlogic.com/"><TwitterIcon /></a>
-                    <a href="https://flatlogic.com/"><FacebookIcon /></a>
-                    <a href="https://flatlogic.com/"><GithubIcon /></a>
-                    <a href="https://flatlogic.com/"><LinkedinIcon /></a>
-                  </div>
+                  <p className="social-label mb-0">Already have an account ? 
+                  <Link to="/login"> Login here</Link></p>
                 </div>
-                <Link to="/login">Enter the account</Link>
+           
               </form>
             </Widget>
           </Col>
           <Col xs={0} lg={6} className="right-column">
             <div>
-              <img src={loginImage} alt="Error page" />
+              <img src={loginImage}  className="w-100"  alt="Error page" />
             </div>
           </Col>
         </Row>

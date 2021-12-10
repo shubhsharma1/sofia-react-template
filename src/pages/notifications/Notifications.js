@@ -1,14 +1,20 @@
 import React, { useState } from "react";
+import { withRouter, Redirect, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import classnames from "classnames";
 import {
-  Col,
+  Container,
   Row,
+  Col,
   Button,
+  FormGroup,
+  FormText,
+  Input,
 } from "reactstrap";
 import Widget from "../../components/Widget/Widget.js";
 import Code from "../../components/Code/Code.js";
+import loginImage from "../../assets/rails.jpg";
 import Notification from "../../components/Notification/Notification.js";
 import s from "./Notifications.module.scss";
 import successIcon from "../../assets/notificationsIcons/successIcon.svg";
@@ -47,139 +53,72 @@ const Notifications = function () {
   return (
     <div>
       <Row className="gutter mb-4">
-        <Col xs={12} lg={4}>
+        <Col xs={12} lg={12}>
           <Widget className="widget-p-md">
-            <div className="headline-2">Layout Options</div>
-            <div className={s.widgetText}>There are few position options available for notifications. You can click any of them to change notifications position:</div>
-            <div className={s.layoutContainer}>
-              <div className={s.layoutButtonsRow}>
-                <button
-                  onClick={() => changeNotificationPosition(0)}
-                  className={classnames(s.layoutButton, {[s.layoutButtonActive]: notificationPosition === 0})}
+            <div className="headline-2">Book Flights, Hotels and Holiday Packages</div>
+            <div className={s.widgetText}>Flight booking, cheap air tickets of domestic & international airlines with Fake Reservations</div>
+            <form >
+            <Container fluid="xxl">
+          <Row>
+            <Col sm> 
+             <FormGroup className="my-3">
+                <FormText>Source Address</FormText>
+                <Input
+                  id="email"
+                  className="input-transparent pl-3"
+                  // value={state.email}
+            
+                  type="text"
+                  required
+                  name="source"
+                  placeholder="Enter Source Address"
                 />
-                <button
-                  onClick={() => changeNotificationPosition(1)}
-                  className={classnames(s.layoutButton, {[s.layoutButtonActive]: notificationPosition === 1})}
+              </FormGroup></Col>
+              <Col sm>  <FormGroup className="my-3">
+                <FormText>Destination Address</FormText>
+                <Input
+                  id="email"
+                  className="input-transparent pl-3"
+                  // value={state.email}
+            
+                  type="email"
+                  required
+                  name="email"
+                  placeholder="Enter Destination Address"
                 />
-                <button
-                  onClick={() => changeNotificationPosition(2)}
-                  className={classnames(s.layoutButton, {[s.layoutButtonActive]: notificationPosition === 2})}
+              </FormGroup></Col>
+            <Col sm >  <FormGroup className="my-3">
+                <FormText>Date of Journey</FormText>
+                <Input
+                  id="email"
+                  className="input-transparent pl-3"
+                  // value={state.email}
+            
+                  type="date"
+                  required
+                  name="email"
+                  placeholder="Enter Your Email ID"
                 />
-              </div>
-              <div className={s.layoutText}>Click any position</div>
-              <div className={s.layoutButtonsRow}>
-                <button
-                  onClick={() => changeNotificationPosition(3)}
-                  className={classnames(s.layoutButton, {[s.layoutButtonActive]: notificationPosition === 3})}
-                />
-                <button
-                  onClick={() => changeNotificationPosition(4)}
-                  className={classnames(s.layoutButton, {[s.layoutButtonActive]: notificationPosition === 4})}
-                />
-                <button
-                  onClick={() => changeNotificationPosition(5)}
-                  className={classnames(s.layoutButton, {[s.layoutButtonActive]: notificationPosition === 5})}
-                />
-              </div>
-            </div>
-          </Widget>
-        </Col>
-        <Col xs={12} lg={4} className="mt-4 mt-lg-0">
-          <Widget className="widget-p-md">
-            <div className="headline-2">Notification Types</div>
-            <div className={s.widgetText}>Different types of notifications for lots of use cases. Custom classes are also supported.</div>
-            <div className=" headline-3 mt-4 mb-2">Message with icon</div>
-            <Button
-              color="primary"
-              className="notification-btn"
-              onClick={() => {
-                let value = getRandomNotification();
-                toast(<Notification type={value} withIcon />, options)}
-              }
-            >
-              <div className="d-flex">
-                <img src={successIcon} alt="..."/>
-                <div className="ml-2 body-2">Default message</div>
-              </div>
-              <img src={closeIcon} alt="..."/>
-            </Button>
-            <div className=" headline-3 mt-4 mb-2">Message without icon</div>
-            <Button
-              color="primary"
-              className="notification-btn"
-              onClick={() => {
-                let value = getRandomNotification();
-                toast(<Notification type={value}/>, options)
-                }
-              }
-            >
-              <div className="ml-2 body-2">Default message</div>
-              <img src={closeIcon} alt="..."/>
-            </Button>
-          </Widget>
-        </Col>
-        <Col xs={12} lg={4} className="mt-4 mt-lg-0">
-          <Widget className="widget-p-md">
-            <div className="headline-2">Notification Types</div>
-            <div className={s.widgetText}>Different types of notifications for lots of use cases. Custom classes are also supported.</div>
-            <Code>{`
-  // import needed components, functions and styles
-  import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+              </FormGroup></Col>
+       
+          </Row>
+        </Container>
 
-  const Page = () => {
-    <div>
-      <ToastContainer />
-      <button onClick={() => toast('Toast Message')}>
-        show notification
-      </button>
-    </div>
-  };
-            `}</Code>
-            <p className="label muted">For more API information refer to the library documentation</p>
+
+           
+             
+              <div className="bg-widget d-flex ">
+                
+                <Button className="rounded-pill my-3" type="submit" color="secondary-red">Create a Reservation</Button>
+              </div>
+             
+              
+            </form>
           </Widget>
         </Col>
+    
       </Row>
-      <Row className="gutter mb-4">
-        <Col xs={12} lg={6}>
-          <Widget className="widget-p-md">
-            <div className="headline-2 mb-4">Notification Types Examples</div>
-            <Notification
-              type="info"
-              withIcon
-            />
-            <Notification
-              type="error"
-              withIcon
-            />
-            <Notification
-              type="success"
-              withIcon
-            />
-            <Notification
-              type="warning"
-              withIcon
-            />
-          </Widget>
-        </Col>
-        <Col xs={12} lg={6} className="mt-4 mt-lg-0">
-          <Widget className="widget-p-md">
-            <div className="headline-2 mb-4">Notifications Types Examples, without icons</div>
-            <Notification
-              type="info"
-            />
-            <Notification
-              type="error"
-            />
-            <Notification
-              type="success"
-            />
-            <Notification
-              type="warning"
-            />
-          </Widget>
-        </Col>
-      </Row>
+    
     </div>
   )
 }

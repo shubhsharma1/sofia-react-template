@@ -45,13 +45,13 @@ const Breadcrumbs = (props) => {
   let routeArr = props.url.split('/');
   let title = routeArr[routeArr.length - 1];
   let breadcrumbTitle = title[0].toUpperCase() + title.slice(1)
-
+  
   return (
     <div className={s.breadcrumbs}>
-      <div className="headline-2">{breadcrumbTitle}</div>
+      <div className="headline-2">{breadcrumbTitle=='Notifications'?"Plan Your Journey":breadcrumbTitle}</div>
       {breadcrumbTitle !== "Dashboard" &&
       <Breadcrumb tag="nav" listTag="div">
-        {renderBreadcrumbs()}
+        {/* {renderBreadcrumbs()} */}
       </Breadcrumb>
       }
     </div>

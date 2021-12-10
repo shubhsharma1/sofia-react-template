@@ -77,7 +77,7 @@ const Header = (props) => {
           <MenuIcon className={s.menuIcon} />
         </NavLink>
       </div>
-      <Form className="d-none d-sm-block" inline>
+      {/* <Form className="d-none d-sm-block" inline>
         <FormGroup>
           <InputGroup className='input-group-no-border'>
             <Input id="search-input" placeholder="Search Dashboard" className='focus'/>
@@ -88,7 +88,7 @@ const Header = (props) => {
             </InputGroupAddon>
           </InputGroup>
         </FormGroup>
-      </Form>
+      </Form> */}
       <Nav className="ml-auto">
         <NavItem className="d-sm-none mr-4">
           <NavLink
@@ -98,7 +98,7 @@ const Header = (props) => {
             <SearchIcon />
           </NavLink>
         </NavItem>
-        <Dropdown nav isOpen={menuOpen} toggle={() => toggleMenu()} className="tutorial-dropdown mr-2 mr-sm-3">
+        {/* <Dropdown nav isOpen={menuOpen} toggle={() => toggleMenu()} className="tutorial-dropdown mr-2 mr-sm-3">
           <DropdownToggle nav>
             <div className={s.navbarBlock}>
               <i className={'eva eva-bell-outline'}/>
@@ -123,21 +123,21 @@ const Header = (props) => {
             <DropdownItem><img src={calendarIcon} alt="Calendar Icon"/><span>1 event has been canceled and ...</span></DropdownItem>
             <DropdownItem><img src={envelopeIcon} alt="Envelope Icon"/><span>you have 2 new messages</span></DropdownItem>
           </DropdownMenu>
-        </Dropdown>
+        </Dropdown> */}
         <Dropdown isOpen={notificationsOpen} toggle={() => toggleNotifications()} nav id="basic-nav-dropdown" className="ml-3">
           <DropdownToggle nav caret className="navbar-dropdown-toggle">
             <span className={`${s.avatar} rounded-circle float-left mr-2`}>
               <img src={userImg} alt="User"/>
             </span>
-            <span className="small d-none d-sm-block ml-1 mr-2 body-1">Christina Carey</span>
+            <span className="small d-none d-sm-block ml-1 mr-2 body-1">user@gmail.com</span>
           </DropdownToggle>
           <DropdownMenu className="navbar-dropdown profile-dropdown" style={{ width: "194px" }}>
-            <DropdownItem className={s.dropdownProfileItem}><ProfileIcon/><span>Profile</span></DropdownItem>
+            {/* <DropdownItem className={s.dropdownProfileItem}><ProfileIcon/><span>Profile</span></DropdownItem>
             <DropdownItem className={s.dropdownProfileItem}><TasksIcon/><span>Tasks</span></DropdownItem>
-            <DropdownItem className={s.dropdownProfileItem}><MessagesIcon/><span>Messages</span></DropdownItem>
+            <DropdownItem className={s.dropdownProfileItem}><MessagesIcon/><span>Messages</span></DropdownItem> */}
             <NavItem>
               <NavLink onClick={() => doLogout()} href="#">
-                <button className="btn btn-primary rounded-pill mx-auto logout-btn" type="submit"><img src={logoutIcon} alt="Logout"/><span className="ml-1">Logout</span></button>
+                <button className="btn btn-primary rounded-pill mx-auto " type="submit"><img src={logoutIcon} alt="Logout"/><span className="ml-1">Logout</span></button>
               </NavLink>
             </NavItem>
           </DropdownMenu>
